@@ -16,7 +16,12 @@ Vue.component('todo-item-global', {
 // 局部组件
 var componentLocal = {
 	props    : ['item', 'index'],
-	template : '<div>值 : {{ item }}&nbsp;&nbsp;&nbsp;序号 : {{ index }}</div>'
+	template : '<div @click="handleDelClick">值 : {{ item }}&nbsp;&nbsp;&nbsp;序号 : {{ index }}</div>',
+	methods  : {
+		handleDelClick: function(){
+			this.$emit('delitem', this.index);
+		}
+	}
 };
 
 var app = new Vue({
