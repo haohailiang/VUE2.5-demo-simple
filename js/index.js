@@ -3,27 +3,36 @@
 // 实例
 
 // 全局组件
-Vue.component('todo-item', {
+Vue.component('todo-item-global', {
 	props    : ['item', 'index'],
-	template : '<li>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{index}}</li>'
+	template : '<div>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{ index }}</div>'
 });
+
+// 局部组件
+var componentLocal = {
+	props    : ['item', 'index'],
+	template : '<div>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{ index }}</div>'
+};
 
 var app = new Vue({
 	el: '#root',
+	components:{
+		'todo-item-local' : componentLocal
+	},
 	data: {
-		msg             : 'Hello World!',
-		number          : 123,
-		h4Font          : '<strong>strongFont</strong>',
-		title           : 'this is dynamic property bind',
-		oneWayContent   : '单向数据绑定',
-		twoWayContent   : '手工双向数据绑定',
-		computedProp1   : '',
-		computedProp2   : '',
-		computedCount   : 0,
-		conditionSwitch : true,
-		loopItems       : ['星期天', '星期一', '星期二'],
-		todoInputValue  : '',
-		todoLists       : []
+		msg               : 'Hello World!',
+		number            : 123,
+		h4Font            : '<strong>strongFont</strong>',
+		title             : 'this is dynamic property bind',
+		oneWayContent     : '单向数据绑定',
+		twoWayContent     : '手工双向数据绑定',
+		computedProp1     : '',
+		computedProp2     : '',
+		computedCount     : 0,
+		conditionSwitch   : true,
+		loopItems         : ['星期天', '星期一', '星期二'],
+		todoInputValue    : '',
+		todoLists         : []
 	},
 	methods: {
 		handleClick: function(){
