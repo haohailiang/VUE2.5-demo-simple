@@ -13,7 +13,8 @@
 	<h4>todo-list[回车添加]</h4>
 	<input type="text" v-model="todoInputValue" @keyup.enter="handleSubmit">
 	<ul>
-		<li v-for="(item, index) of todoLists">{{ item }}</li>
+		<!-- <li v-for="(item, index) of todoLists">{{ item }}</li> -->
+		<todo-item v-for="(item, index) of todoLists" :item=item :index=index :key=item></todo-item>
 	</ul>
 
 	<h4>循环迭代</h4>

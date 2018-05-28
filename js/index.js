@@ -2,6 +2,12 @@
 // 模板[可以卸载JS代码的template中, 也可以写在html内容中]
 // 实例
 
+// 全局组件
+Vue.component('todo-item', {
+	props    : ['item', 'index'],
+	template : '<li>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{index}}</li>'
+});
+
 var app = new Vue({
 	el: '#root',
 	data: {
