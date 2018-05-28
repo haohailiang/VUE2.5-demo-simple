@@ -14,7 +14,7 @@
 	<input type="text" v-model="todoInputValue" @keyup.enter="handleSubmit">
 	<!-- <li v-for="(item, index) of todoLists">{{ item }}</li> -->
 	<div>
-		<todo-item-global v-for="(item, index) of todoLists" :item=item :index=index :key=item></todo-item-global>
+		<todo-item-global v-for="(item, index) of todoLists" :item=item :index=index :key=item @delitem="handleDelClick"></todo-item-global>
 	</div>
 	<div>--------------------------------------------------------------------------------------------------</div>
 	<div>

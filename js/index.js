@@ -5,13 +5,18 @@
 // 全局组件
 Vue.component('todo-item-global', {
 	props    : ['item', 'index'],
-	template : '<div>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{ index }}</div>'
+	template : '<div @click="handleDelClick">值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{ index }}</div>',
+	methods  : {
+		handleDelClick: function(){
+			this.$emit('delitem', this.index)
+		}
+	}
 });
 
 // 局部组件
 var componentLocal = {
 	props    : ['item', 'index'],
-	template : '<div>值:{{ item }}&nbsp;&nbsp;&nbsp;序号:{{ index }}</div>'
+	template : '<div>值 : {{ item }}&nbsp;&nbsp;&nbsp;序号 : {{ index }}</div>'
 };
 
 var app = new Vue({
@@ -32,7 +37,7 @@ var app = new Vue({
 		conditionSwitch   : true,
 		loopItems         : ['星期天', '星期一', '星期二'],
 		todoInputValue    : '',
-		todoLists         : []
+		todoLists         : ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 	},
 	methods: {
 		handleClick: function(){
@@ -44,6 +49,9 @@ var app = new Vue({
 		handleSubmit: function(){
 			this.todoLists.push(this.todoInputValue);
 			this.todoInputValue = '';
+		},
+		handleDelClick: function(index){
+			this.todoLists.splice(index, 1);
 		}
 	},
 	watch: {
